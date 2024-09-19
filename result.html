@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+</head>
+<body>
+    <h1>Detected Objects</h1>
+    <img src="{{ url_for('static', filename='results/' + result_image) }}" alt="Detected Image" width="600">
+    
+    <h2>Detection Details</h2>
+    <ul>
+        {% for box in boxes %}
+        <li>{{ box['name'] }} (confidence: {{ box['confidence'] }}) at [{{ box['xmin'] }}, {{ box['ymin'] }}, {{ box['xmax'] }}, {{ box['ymax'] }}]</li>
+        {% endfor %}
+    </ul>
+    
+    <a href="/">Upload another image</a>
+</body>
+</html>
